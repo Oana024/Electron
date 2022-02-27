@@ -1,0 +1,46 @@
+          Pentru a plasa o piesa pe tabla, apasi click.
+          Pentru a modifica o piesa de pe tabla , apasati
+click dreapta pe piesa respectiva. Nu se poate modifica
+o piesa de tip "punct". Nu se poate modifica tipul unei
+piese in tipul "punct".
+          Pentru a lega doua piese apasati click pe o piesa,
+apoi pe alta. In stanga sus a ecranului aveti
+un indicator care indica daca modul de legat
+doua piese este activat sau nu.
+          Pentru a invarti legatura , apasati click dreapta
+pe coltul liniei.
+          Pentru a anula o legatura , se va apasa tasta
+"x" de pe tastatura.
+          Pentru a schimba piesa selectata, se va
+apasa pe butonul "Meniu".
+          Pentru a muta o piesa, se apasa pe butonul 
+"Mutare", se va da click pe o piesa pentru a se 
+ridica si se va da click din nou pentru a lasa
+piesa jos. Butonul isi va schimba aspectul
+ca sa indice faptul ca modul mutare
+este activat sau nu.
+          Pentru a sterge o piesa, se apasa pe butonul
+"Sterge", se va da click pe o piesa pentru a o
+sterge. Butonul isi va schimba aspectul ca sa
+indice faptul ca modul sterge este activat sau nu.
+          Pentru a sterge o legatura intre 2 piese, 
+se apasa pe butonul "Sterge" si se va apasa
+click dreapta pe ambele piese. Butonul isi va
+schimba aspectul ca sa indice faptul ca modul
+sterge este activat sau nu.
+          Pentru a anula stergerea unei legaturi , 
+se va apasa tasta "x" de pe tastatura.
+          Pentru a salva un proiect, se va da apasa
+pe butonul "Salvare". Se va deschide un meniu
+care arata toate salvarile de pana acum si un patrat
+cu un plus in caz de mai este loc liber de a salva un
+nou proiect. Maxim 8 proiecte pot fi salvate. Se va 
+selecta unde se va salva proiectul si se va apasa
+pe butonul "Confirm". Casuta selectata isi va
+schimba aspectul.
+          Pentru a incarca un proiect, se va apasa
+pe butonul "Incarcare". Se va deschide un meniu
+care arata toate salvarile de pana acum. Se va selecta
+ce proiect doriti sa incarcati si apasati pe butonul
+"Confirm" pentru a continua. Casuta selectata
+isi va schimba aspectul.

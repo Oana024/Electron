@@ -1,0 +1,268 @@
+#include <bits/stdc++.h>
+#include <winbgim.h>
+#include <graphics.h>
+#define ultimNod Circuit.Noduri[Circuit.NumarNoduri]
+
+/*
+DE FACUT :
+-Buton de undo
+-De facut subprogram de verificare
+daca se apasa pe o piesa sau nu
+-De facut legarea a doua piese
+-Meniu de selectat piesa
+-Buton de sters piesa
+-De pus la fiecare legatura piesa de contact
+-Mutare piesa
+*/
+using namespace std;
+int nrPiese;
+char piese[101][101];
+int dimensiunePiesa=100;
+int page=1;
+struct lst
+{
+    int TipNod;
+    int CateNoduri;
+    int x,y,marime;
+    int Vecini[101];
+    int orientare;
+};
+struct Graf
+{
+    int NumarNoduri;
+    lst Noduri[101];
+};
+Graf Circuit;
+int linie(int xinitial,int yinitial,int xfinal,int yfinal)
+{
+    int ok;
+
+    if(yinitial<yfinal)
+        if(xinitial<xfinal)  ok=1;
+        else                 ok=0;
+    else
+        if(xinitial<xfinal)  ok=0;
+        else                 ok=1;
+
+    if(ok==0)
+        {
+            line(xinitial,yinitial,xfinal,yinitial);
+            line(xfinal,yinitial,xfinal,yfinal);
+        }
+        else
+        {
+            line(xinitial,yinitial,xinitial,yfinal);
+            line(xinitial,yfinal,xfinal,yfinal);
+        }
+}
+int coliziune(int x1,int y1,int marime1,int x2,int y2,int marime2)
+{
+    if(y2+marime2>=y1-marime1&&y2+marime2<=y1+marime1) {
+        if(x1-marime1<=x2-marime2&&x1+marime1>=x2-marime2) return 1;
+        if(x1-marime1<=x2+marime2&&x1+marime1>=x2+marime2) return 1;
+    }
+    if(y2-marime2>=y1-marime1&&y2-marime2<=y1+marime1) {
+        if(x1-marime1<=x2-marime2&&x1+marime1>=x2-marime2) return 1;
+        if(x1-marime1<=x2+marime2&&x1+marime1>=x2+marime2) return 1;
+    }
+     return 0;
+}
+void desenarePiesa(int index,int x,int y,int marime,int orientare)
+{
+    char s[101];
+    marime=marime/2;
+    strcpy(s,piese[index]);
+    strcat(s,"\\\\");
+    s[strlen(s)-1]=orientare+'0';
+    strcat(s,".jpg");
+    cout<<s<<'\n';
+    readimagefile(s,x-marime,y-marime,x+marime,y+marime);
+}
+int leagaPiesa(int ps)
+{
+    cout<<ps<<'\n';
+}
+
+void punePiesa(int index,int x,int y,int marime,int orientare)
+{
+    marime=marime/2;
+    desenarePiesa(index,x,y,marime*2,orientare);
+    Circuit.NumarNoduri++;
+    ultimNod.TipNod=index;
+    ultimNod.x=x;
+    ultimNod.y=y;
+    ultimNod.marime=marime;
+    ultimNod.CateNoduri=0;
+}
+void adaugaNod(int a,int b)
+{
+    Circuit.Noduri[a].CateNoduri++;
+    Circuit.Noduri[a].Vecini[Circuit.Noduri[a].CateNoduri]=b;
+    Circuit.Noduri[b].CateNoduri++;
+    Circuit.Noduri[b].Vecini[Circuit.Noduri[b].CateNoduri]=a;
+}
+void Elimina(int v[],int n,int x)
+{
+    int i,ok=0;
+    for(i=1;i<=n;i++)
+    {
+        if(v[i]==x) ok=1;
+        if(ok==1) v[i]=v[i+1];
+    }
+}
+int verificare(int index,int x,int y,int marime,int orientare)
+{
+    int OK=0,i,piesaSelectata;
+    marime=marime/2;
+    for(i=1;i<=Circuit.NumarNoduri&&OK==0;i++)
+        if(coliziune(Circuit.Noduri[i].x,Circuit.Noduri[i].y,Circuit.Noduri[i].marime,x,y,marime)==1) {piesaSelectata=i; OK=1;}  // de refacut asta
+    if(OK==0) punePiesa(index,x,y,marime*2,orientare);
+    else      leagaPiesa(piesaSelectata);
+}
+void EliminaMuchie(int a,int b)
+{
+    int i;
+    Elimina(Circuit.Noduri[a].Vecini,Circuit.Noduri[a].CateNoduri,b);
+    Elimina(Circuit.Noduri[b].Vecini,Circuit.Noduri[b].CateNoduri,a);
+    Circuit.Noduri[a].CateNoduri--;
+    Circuit.Noduri[b].CateNoduri--;
+
+}
+void citirePiese()
+{
+    int i;
+    FILE *fisier_piese=fopen("piese.txt","r");
+    fscanf(fisier_piese,"%d",&nrPiese);
+    for(i=1; i<=nrPiese; i++)
+    {
+        fscanf(fisier_piese,"%s",&piese[i]);
+    }
+}
+
+struct punct
+{
+    int x, y;
+};
+
+struct piesa
+{
+    int numarLegaturi;
+    punct Leg[101];
+};
+
+int Distanta_dintre_2_puncte(int x, int y)
+{
+    return sqrt((x*x)+(y*y));
+}
+
+int Find(piesa X, punct P)
+{
+    int i, dist, distMin=10000, L;
+    for(i=1; i<=X.numarLegaturi; i++)
+    {
+        dist=Distanta_dintre_2_puncte((P.x-X.Leg[i].x), (P.y-X.Leg[i].y));
+        if(dist<distMin)
+        {
+            distMin=dist;
+            L=i;
+        }
+    }
+    return L;
+}
+void deseneaza()
+{
+    setactivepage(page);
+    page=1-page;
+    setvisualpage(page);
+    clearviewport();
+}
+int main()
+{
+    citirePiese();
+    int i,index,x,y,z=1,orientare=1;
+    int desen=0,OK=0,userpat;
+    int xfinal,yfinal,xinitial,yinitial,xant,yant;
+    initwindow(1000,1000);
+    char key,pie;
+    pie='p';
+    userpat=1;
+    index=1;
+    key='p';
+    while(z)
+    {
+        ///deseneaza();
+        if(kbhit())
+        {
+            key=getch();
+            if(key>='0'&&key<='9')
+                index=key-'0';
+            if(key>='a'&&key<='d')
+                orientare=key-'a'+1;
+            if(key=='p'||key=='l')
+            {deseneaza();
+                page=0;
+            setactivepage(page);
+            setvisualpage(page);
+                pie=key;
+            }
+        }
+    if(pie=='p')
+    {
+        if(ismouseclick(WM_LBUTTONDOWN))
+        {
+            x=mousex();
+            y=mousey();
+            clearmouseclick(WM_LBUTTONDOWN);
+            verificare(index,x,y,dimensiunePiesa,orientare);
+        }
+
+    }
+    else
+    {
+        if(ismouseclick(WM_LBUTTONDOWN))
+        {
+            desen=1;
+            if(OK==0)
+            {
+            xinitial=mousex();
+            yinitial=mousey();
+            xant=xinitial;
+            yant=yinitial;
+            OK=1;
+            }
+            else
+            {
+                xfinal=mousex();
+                yfinal=mousey();
+                OK=0;
+            }
+            clearmouseclick(WM_LBUTTONDOWN);
+        }
+        if(OK==1)
+        {
+            deseneaza();
+            ///setlinestyle(SOLID_LINE, userpat, 5);
+            ///setcolor(WHITE);
+            linie(xinitial,yinitial,mousex(),mousey());
+            /*if(xant!=mousex()||yant!=mousey())
+            {
+            setlinestyle(SOLID_LINE, userpat, 10);
+            setcolor(BLACK);
+            linie(xinitial,yinitial,xant,yant);
+            }
+            xant=mousex();
+            yant=mousey();*/
+        }
+        if(desen==1&&OK==0)
+        {
+            deseneaza();
+            cout<<xinitial<<" "<<yinitial<<" "<<xfinal<<" "<<yfinal<<'\n';
+            ///setlinestyle(SOLID_LINE, userpat, 5);
+            ///setcolor(WHITE);
+            linie(xinitial,yinitial,xfinal,yfinal);
+            desen=0;
+        }
+    }
+    }
+    getch();
+}

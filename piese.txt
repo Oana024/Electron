@@ -1,0 +1,9 @@
+7
+capacitor
+dioda
+inductor
+punct
+rezistor
+sursa
+sursa_alternativa
+tranzistor

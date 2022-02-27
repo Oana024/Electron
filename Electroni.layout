@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="piese.txt" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="9" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="10" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="36869" topLine="252" />
+		</Cursor>
+		<Folding>
+			<Collapse line="22" />
+			<Collapse line="30" />
+			<Collapse line="41" />
+			<Collapse line="50" />
+			<Collapse line="58" />
+			<Collapse line="67" />
+			<Collapse line="72" />
+			<Collapse line="79" />
+			<Collapse line="88" />
+			<Collapse line="103" />
+			<Collapse line="111" />
+			<Collapse line="119" />
+			<Collapse line="145" />
+			<Collapse line="153" />
+			<Collapse line="163" />
+			<Collapse line="210" />
+			<Collapse line="216" />
+			<Collapse line="222" />
+			<Collapse line="227" />
+			<Collapse line="243" />
+			<Collapse line="263" />
+			<Collapse line="304" />
+			<Collapse line="327" />
+			<Collapse line="342" />
+			<Collapse line="430" />
+			<Collapse line="477" />
+			<Collapse line="544" />
+			<Collapse line="614" />
+			<Collapse line="664" />
+			<Collapse line="722" />
+			<Collapse line="800" />
+			<Collapse line="826" />
+			<Collapse line="838" />
+			<Collapse line="880" />
+			<Collapse line="892" />
+			<Collapse line="934" />
+			<Collapse line="978" />
+			<Collapse line="1026" />
+			<Collapse line="1040" />
+		</Folding>
+	</File>
+</CodeBlocks_layout_file>

@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1607539160 source:c:\users\asus\dropbox\proiect oana + mihai\electroni\mihai.cpp
+	<bits/stdc++.h>
+	<winbgim.h>
+	<graphics.h>
+
+1607539161 c:\users\asus\dropbox\proiect oana + mihai\electroni\header.h
+
+1607539158 source:c:\users\asus\dropbox\proiect oana + mihai\electroni\oana.cpp
+	<bits/stdc++.h>
+
+1608309781 source:c:\users\asus\dropbox\proiect oana + mihai\electroni\main.cpp
+	<bits/stdc++.h>
+	<winbgim.h>
+	<graphics.h>
+
+1607539370 c:\users\asus\dropbox\proiect oana + mihai\electroni\oana.cpp
+
+1607539368 c:\users\asus\dropbox\proiect oana + mihai\electroni\mihai.cpp
+
+1609955463 source:c:\users\qq\dropbox\proiect oana + mihai\electroni\main.cpp
+	<bits/stdc++.h>
+	<winbgim.h>
+	<graphics.h>
+	<thread>
+
+1610120972 source:c:\users\qq\dropbox\proiect_oana+mihai\electroni\main.cpp
+	<bits/stdc++.h>
+	<winbgim.h>
+	<graphics.h>
+
+1610728502 source:c:\users\asus\dropbox\proiect_oana+mihai\electroni\main.cpp
+	<bits/stdc++.h>
+	<winbgim.h>
+	<graphics.h>
+
